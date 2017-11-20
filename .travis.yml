@@ -8,3 +8,6 @@ jdk:
   
  # The SDK version used to compile your project
    - android-23
+   
+script:
+  - ./gradlew jacocoTestReport coveralls
