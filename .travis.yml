@@ -5,8 +5,6 @@ sudo: required
 before_install:
 - chmod +x gradlew
 
-script: ./gradlew check
-
 android:
   components:
     - tools
