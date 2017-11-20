@@ -4,6 +4,7 @@ sudo: required
 
 before_install:
  - chmod +x gradlew
+ - ./gradlew dependencies || true
    
 env:
   global:
