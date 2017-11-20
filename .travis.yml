@@ -4,15 +4,13 @@ sudo: required
 
 install: ./gradlew assemble
 script: ./gradlew check
-   
-env:
-  global:
-    - ANDROID_API_LEVEL=23
-    - EMULATOR_API_LEVEL=21
-    - ANDROID_BUILD_TOOLS_VERSION=23.0.2
-    - ANDROID_ABI=armeabi-v7a
-    - ANDROID_TRAVIS=1
 
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-25.0.1
+    - android-23
 
 cache:
   directories:
