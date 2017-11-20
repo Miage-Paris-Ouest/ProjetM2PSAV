@@ -13,6 +13,7 @@ android:
     - android-23
     - sys-img-armeabi-v7a-google_apis-23
     - extra-android-m2repository
+    - extra-google-m2repository
     - extra-android-support
   licenses:
     - 'android-sdk-preview-license-.+'
