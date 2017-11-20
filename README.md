@@ -1,4 +1,4 @@
-# Projet_M2_PSAV
+# ProjetM2PSAV
 Projet de M2 de Piron William, Sow Maïmouna, Adonis Gerald et Viller Nathanaëlle
 
 ### Use Case ###
