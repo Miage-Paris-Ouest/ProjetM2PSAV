@@ -1,7 +1,7 @@
 language: android
 jdk: oraclejdk8
 # Use the Travis Container-Based Infrastructure
-sudo: true
+sudo: false
 
 before_install:
 - chmod +x gradlew
