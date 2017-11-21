@@ -12,11 +12,13 @@ android:
     - tools
     - platform-tools
     - android-23
-    - build-tools-23.0.2
+    - android-26
+    - build-tools-26.0.2
     - extra-android-m2repository
     - extra-google-m2repository
     - extra-android-support
     - sys-img-armeabi-v7a-android-23
+    - sys-img-armeabi-v7a-android-26
   licenses:
     - 'android-sdk-preview-license-.+'
     - 'android-sdk-license-.+'
