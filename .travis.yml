@@ -10,6 +10,7 @@ before_install:
 android:
   components:
     - tools
+    - extra
     - platform-tools
     - android-23
     - android-26
