@@ -34,4 +34,5 @@ before_script:
 
 script: 
   - ./gradlew connectedAndroidTest coveralls
+  - echo y | sdkmanager --licenses
   
