@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "50965894241",
+    "firebase_url": "https://projetm2psav.firebaseio.com",
+    "project_id": "projetm2psav",
+    "storage_bucket": "projetm2psav.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50965894241:android:4f0a22dcfc2a0742",
+        "android_client_info": {
+          "package_name": "com.example.nviller.projetm2psav"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "50965894241-dmae3f49a5m62eahq8jntmjn6miapard.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBp-AjuIcpPom_mh2iypNAhEOzaNpNPG8M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
