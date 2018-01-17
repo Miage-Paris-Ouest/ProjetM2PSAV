@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:id="@+id/main_content">
     </RelativeLayout>
-    
+
     <ListView
         android:layout_width="200dp"
         android:layout_height="match_parent"
@@ -28,6 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hell word!"
+
+        android:text="Bonjour le monde!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
