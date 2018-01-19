@@ -24,8 +24,6 @@ import com.example.nviller.projetm2psav.model.ItemSlideMenu;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -34,14 +32,13 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private EditText emailUser;
     private EditText passwordUser;
-    //private List<ItemSlideMenu> listSliding;
+
     private List<ItemSlideMenu> listSliding;
     private SlidingMenuAdapter adapter;
     private ListView listViewSliding;
     private DrawerLayout drawerLayout;
     //private RelativeLayout mainContent;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 });
                 */
     }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -145,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
         //drawerLayout.setDrawerListener(actionBarDrawerToggle);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -165,10 +164,9 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
-    //Create method replace fragment
-    private void  replaceFragment(int pos){
+    private void  replaceFragment(int pos) {
         Fragment fragment = null;
-        switch (pos){
+        switch (pos) {
             case 0:
                 fragment = new Fragment1();
                 break;
@@ -182,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new Fragment1();
                 break;
         }
-        if (null != fragment){
+        if (null != fragment) {
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.replace(R.id.main_content, fragment);

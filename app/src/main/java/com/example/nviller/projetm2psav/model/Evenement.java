@@ -1,6 +1,6 @@
-package com.example.nviller.projetm2psav.Model;
+package com.example.nviller.projetm2psav.model;
 
-import com.google.firebase.database.Exclude;
+
 
 /**
  * Created by nviller on 11/12/2017.
