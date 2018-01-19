@@ -8,44 +8,46 @@
         android:layout_width="368dp"
         android:layout_height="495dp"
         android:orientation="vertical">
+
         <EditText
             android:id="@+id/cu_email_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Email" />
+            android:hint="Email"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/cu_password_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Mot de passe" />
+            android:hint="Mot de passe"
+            android:inputType="textPersonName" />
+
         <EditText
             android:id="@+id/cu_login_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Login" />
+            android:hint="Login"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/cu_firstname_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Prénom" />
+            android:hint="Prénom"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/cu_lastname_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Nom" />
+            android:hint="Nom"
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/cu_create_user"
