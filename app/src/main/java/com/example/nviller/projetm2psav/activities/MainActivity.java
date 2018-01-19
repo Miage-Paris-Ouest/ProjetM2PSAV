@@ -1,9 +1,11 @@
-package com.example.nviller.projetm2psav;
+package com.example.nviller.projetm2psav.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -14,7 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.nviller.projetm2psav.R;
 import com.example.nviller.projetm2psav.adapter.SlidingMenuAdapter;
 import com.example.nviller.projetm2psav.fragment.Fragment1;
 import com.example.nviller.projetm2psav.fragment.Fragment2;
@@ -45,30 +49,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-        /*emailUser = (EditText) findViewById(R.id.email_user_ma);
-        passwordUser = (EditText) findViewById(R.id.password_user_ma);
 
-        mAuth.createUserWithEmailAndPassword(emailUser, passwordUser)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
+        final Button buttonCreateUser = (Button) findViewById(R.id.create_user_ma);
+       buttonCreateUser.setOnClickListener(new View.OnClickListener() {
 
-                        // ...
-                    }
-                });
-                */
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CreateUserActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
     }
 
     @Override
