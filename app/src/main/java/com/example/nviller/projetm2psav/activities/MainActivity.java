@@ -1,9 +1,11 @@
-package com.example.nviller.projetm2psav;
+package com.example.nviller.projetm2psav.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.nviller.projetm2psav.R;
 import com.example.nviller.projetm2psav.adapter.SlidingMenuAdapter;
 import com.example.nviller.projetm2psav.fragment.Fragment1;
 import com.example.nviller.projetm2psav.fragment.Fragment2;
@@ -45,6 +48,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
+
+        final Button buttonCreateUser = (Button) findViewById(R.id.cu_create_user);
+        buttonCreateUser.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CreateUserActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+
         /*emailUser = (EditText) findViewById(R.id.email_user_ma);
         passwordUser = (EditText) findViewById(R.id.password_user_ma);
 

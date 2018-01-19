@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     android:orientation="vertical"
-    tools:context="com.example.nviller.projetm2psav.MainActivity">
+    tools:context="com.example.nviller.projetm2psav.activities.MainActivity">
 
     <RelativeLayout
         android:id="@+id/main_content"
@@ -49,7 +49,7 @@
             android:id="@+id/create_user_ma"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Créer mon compte" />
+            android:text="Créer un compte" />
 
 
     </LinearLayout>
