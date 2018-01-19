@@ -1,9 +1,12 @@
-package com.example.nviller.projetm2psav;
+package com.example.nviller.projetm2psav.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,7 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.nviller.projetm2psav.R;
 import com.example.nviller.projetm2psav.adapter.SlidingMenuAdapter;
 import com.example.nviller.projetm2psav.fragment.Fragment1;
 import com.example.nviller.projetm2psav.fragment.Fragment2;
@@ -23,9 +28,15 @@ import com.example.nviller.projetm2psav.model.ItemSlideMenu;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-    //private List<ItemSlideMenu> listSliding;
+
+public class MainActivity extends AppCompatActivity {
+    private FirebaseAuth mAuth;
+    private EditText emailUser;
+    private EditText passwordUser;
+
     private List<ItemSlideMenu> listSliding;
     private SlidingMenuAdapter adapter;
     private ListView listViewSliding;
@@ -37,6 +48,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAuth = FirebaseAuth.getInstance();
+
+        final Button buttonCreateUser = (Button) findViewById(R.id.create_user_ma);
+       buttonCreateUser.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CreateUserActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }
+
+    private void updateUI(FirebaseUser currentUser) {
 
         //Init component
         listViewSliding = (ListView)findViewById(R.id.lv_sliding_menu);
@@ -100,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
         //drawerLayout.setDrawerListener(actionBarDrawerToggle);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -120,10 +156,9 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
-    //Create method replace fragment
-    private void  replaceFragment(int pos){
+    private void  replaceFragment(int pos) {
         Fragment fragment = null;
-        switch (pos){
+        switch (pos) {
             case 0:
                 fragment = new Fragment1();
                 break;
@@ -137,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new Fragment1();
                 break;
         }
-        if (null != fragment){
+        if (null != fragment) {
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.replace(R.id.main_content, fragment);
