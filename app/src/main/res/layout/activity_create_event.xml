@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.nviller.projetm2psav.MainActivity">
+    tools:context="com.example.nviller.projetm2psav.CreateEventActivity">
 
     <LinearLayout
         android:layout_width="368dp"
@@ -14,31 +14,17 @@
         tools:layout_editor_absoluteY="8dp">
 
         <EditText
-            android:id="@+id/email_user_ma"
+            android:id="@+id/name_event_cea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Email" />
-
-        <EditText
-            android:id="@+id/password_user_ma"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Mot de passe" />
+            android:text="Nom de l'événement" />
 
         <Button
-            android:id="@+id/create_user_ma"
+            android:id="@+id/create_event_cea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Créer mon compte" />
-
-        <Button
-            android:id="@+id/register_user_ma"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Se connecter" />
+            android:text="Créer un évément" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
