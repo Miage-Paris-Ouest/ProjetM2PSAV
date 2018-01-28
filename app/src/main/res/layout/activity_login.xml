@@ -56,8 +56,7 @@
         android:layout_below="@+id/activity_login_validate"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="69dp"
-        android:text="Sign Up !"
-        android:textAlignment="center"
+        android:text="Pas encore de compte ? "
         android:id="@+id/activity_login_to_activity_sign_up"/>
 
 </LinearLayout>

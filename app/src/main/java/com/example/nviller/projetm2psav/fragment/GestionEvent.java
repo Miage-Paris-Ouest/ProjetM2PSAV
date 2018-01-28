@@ -23,7 +23,7 @@ public class GestionEvent extends Fragment implements View.OnClickListener{
 
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View vf = inflater.inflate(R.layout.gestionevent, container, false);
+        View vf = inflater.inflate(R.layout.activity_gestion_event, container, false);
         return  vf;
     }
 

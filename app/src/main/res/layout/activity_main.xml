@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     android:orientation="vertical"
+    android:background="@drawable/pageaccueil"
     tools:context="com.example.nviller.projetm2psav.activities.MainActivity">
 
     <RelativeLayout
@@ -24,19 +25,24 @@
             android:layout_gravity="top|center_horizontal"
             android:gravity="top|center_vertical|center_horizontal|center"
             android:text="Bienvenue dans FunEvent"
-            android:textSize="50dp"/>
+            android:textSize="50sp"
+            android:layout_marginTop="10dp"/>
 
         <Button
             android:id="@+id/activity_main_login_button"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
             android:text="Se connecter" />
 
         <Button
             android:id="@+id/activity_main_create_button"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Créer un compte" />
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Créer un compte"/>
 
 
     </LinearLayout>
