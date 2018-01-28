@@ -5,8 +5,6 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,25 +13,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.nviller.projetm2psav.R;
 import com.example.nviller.projetm2psav.adapter.SlidingMenuAdapter;
-import com.example.nviller.projetm2psav.fragment.Fragment1;
+import com.example.nviller.projetm2psav.fragment.GestionEvent;
 import com.example.nviller.projetm2psav.fragment.Fragment2;
 import com.example.nviller.projetm2psav.fragment.Fragment3;
 import com.example.nviller.projetm2psav.model.ItemSlideMenu;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 
 public class MainActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
+
+    private FirebaseAuth firebaseAuth;
     private EditText emailUser;
     private EditText passwordUser;
 
@@ -48,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        final Button buttonCreateUser = (Button) findViewById(R.id.create_user_ma);
-       buttonCreateUser.setOnClickListener(new View.OnClickListener() {
+        final Button buttonCreateUser = (Button) findViewById(R.id.activity_main_create_button);
+        buttonCreateUser.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -61,13 +60,22 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        final Button buttonLogIn = (Button) findViewById(R.id.activity_main_login_button);
+        buttonLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentLog = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intentLog);
+            }
+        });
+
     }
 
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         updateUI(currentUser);
     }
 
@@ -80,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
         listSliding = new ArrayList<>();
 
         //Add item for sliding list
-        listSliding.add(new ItemSlideMenu(R.drawable.setting,"Setting"));
         listSliding.add((new ItemSlideMenu(R.drawable.about, "About")));
+        listSliding.add(new ItemSlideMenu(R.drawable.gestionevent,"Gérer les événements"));
         listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Android"));
         adapter = new SlidingMenuAdapter(this, listSliding);
         listViewSliding.setAdapter(adapter);
@@ -160,16 +168,13 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = null;
         switch (pos) {
             case 0:
-                fragment = new Fragment1();
+                fragment = new Fragment2();
                 break;
             case 1:
-                fragment = new Fragment2();
+                fragment = new GestionEvent();
                 break;
             case 2:
                 fragment = new Fragment3();
-                break;
-            default:
-                fragment = new Fragment1();
                 break;
         }
         if (null != fragment) {
