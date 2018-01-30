@@ -25,12 +25,43 @@ public class GestionEventActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_event);
 
+        final Button buttonCreateEvent = (Button) findViewById(R.id.activity_gestion_event_creer);
+        buttonCreateEvent.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GestionEventActivity.this, CreateEventActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+        Button logoutButton = (Button) findViewById(R.id.activity_gestion_event_log_out);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logOut();
+            }
+        });
+/*
         this.daoUser = DAOUser.getInstance();
 
         if(!daoUser.isLoggedIn()){
             redirectIfNotLoggedIn();
         }
         else{
+
+            final Button buttonCreateUser = (Button) findViewById(R.id.activity_gestion_event_creer);
+            buttonCreateUser.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(GestionEventActivity.this, CreateEventActivity.class);
+                    startActivity(intent);
+                }
+
+            });
+
             Button logoutButton = (Button) findViewById(R.id.activity_gestion_event_log_out);
             logoutButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -39,7 +70,7 @@ public class GestionEventActivity extends AppCompatActivity{
                 }
             });
         }
-
+*/
     }
 
     protected void redirectIfNotLoggedIn() {

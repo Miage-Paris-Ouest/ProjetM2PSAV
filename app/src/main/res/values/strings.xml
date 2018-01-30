@@ -25,4 +25,16 @@
     <string name="last_name">Last Name</string>
     <string name="event_list">Events list</string>
 
+    <!-- Création d'évenement-->
+    <string name="create_event_name">Name</string>
+    <string name="create_event">Create event</string>
+    <string name="create_event_description">Description</string>
+    <string name="create_event_Enregistrer_error_message">Veuillez remplir les champs obligatoires</string>
+    <string name="create_event_submit_error_title">Error !</string>
+    <string name="create_event_date_debut">Date de Debut</string>
+    <string name="create_event_heure_debut">Heure de Debut</string>
+    <string name="create_event_date_fin">Date de Fin</string>
+    <string name="create_event_heure_fin">Heure de Fin</string>
+    <string name="create_event_submit_date_error_message">La date de fin ne peut pas être antérieure à celle du début !</string>
+
 </resources>
