@@ -36,6 +36,17 @@ public class GestionEventActivity extends AppCompatActivity{
 
         });
 
+        final Button buttonEventProx = (Button) findViewById(R.id.activity_gestion_event_proximite);
+        buttonEventProx.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GestionEventActivity.this, LocateActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
         Button logoutButton = (Button) findViewById(R.id.activity_gestion_event_log_out);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override

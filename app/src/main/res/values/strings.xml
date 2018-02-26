@@ -37,4 +37,7 @@
     <string name="create_event_heure_fin">Heure de Fin</string>
     <string name="create_event_submit_date_error_message">La date de fin ne peut pas être antérieure à celle du début !</string>
 
+    <!-- API Google-->
+    <string name="mapKey">AIzaSyCQt0M3ESUv3czbC46b6UGsJCdJJJ0O-tI</string>
+
 </resources>
