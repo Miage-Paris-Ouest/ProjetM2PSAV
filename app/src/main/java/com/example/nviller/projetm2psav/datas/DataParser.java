@@ -1,4 +1,4 @@
-package com.example.nviller.projetm2psav;
+package com.example.nviller.projetm2psav.datas;
 
 import com.google.android.gms.maps.model.LatLng;
 

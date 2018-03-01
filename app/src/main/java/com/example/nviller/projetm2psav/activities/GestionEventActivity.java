@@ -25,6 +25,39 @@ public class GestionEventActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_event);
 
+        final Button buttonEventProx = (Button) findViewById(R.id.activity_gestion_event_proximite);
+        buttonEventProx.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GestionEventActivity.this, EventNearbyActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+        final Button buttonEventFacebook = (Button) findViewById(R.id.activity_gestion_event_facebook);
+        buttonEventFacebook.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GestionEventActivity.this, LocateActivity.class); //à changer
+                startActivity(intent);
+            }
+
+        });
+
+        final Button buttonEventSpotify = (Button) findViewById(R.id.activity_gestion_event_spotify);
+        buttonEventSpotify.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GestionEventActivity.this, LocateActivity.class); //à changer
+                startActivity(intent);
+            }
+
+        });
+
         final Button buttonCreateEvent = (Button) findViewById(R.id.activity_gestion_event_creer);
         buttonCreateEvent.setOnClickListener(new View.OnClickListener() {
 
@@ -36,17 +69,18 @@ public class GestionEventActivity extends AppCompatActivity{
 
         });
 
-        final Button buttonEventProx = (Button) findViewById(R.id.activity_gestion_event_proximite);
-        buttonEventProx.setOnClickListener(new View.OnClickListener() {
+/*
+        final Button buttonMesEvents = (Button) findViewById(R.id.activity_gestion_event_mes_events);
+        buttonMesEvents.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GestionEventActivity.this, LocateActivity.class);
+                Intent intent = new Intent(GestionEventActivity.this, ListEventActivity.class);
                 startActivity(intent);
             }
 
         });
-
+*/
         Button logoutButton = (Button) findViewById(R.id.activity_gestion_event_log_out);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override

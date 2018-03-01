@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.nviller.projetm2psav.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         final Button buttonCreateUser = (Button) findViewById(R.id.activity_main_create_button);
-        buttonCreateUser.setOnClickListener(new View.OnClickListener(){
+        buttonCreateUser.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -45,5 +46,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        final TextView textViewPasCompte = findViewById(R.id.activity_main_not_compte);
+        textViewPasCompte.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GestionEventActivity.class);
+                startActivity(intent);
+            }
+
+        });
     }
 }

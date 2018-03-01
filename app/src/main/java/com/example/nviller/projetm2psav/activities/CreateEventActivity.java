@@ -105,9 +105,6 @@ public class CreateEventActivity extends AppCompatActivity {
                     description = "";
                 }
 
-
-                // NOTE : SEATS / PRICE / DESCRIPTION  =>  OPTIONAL
-
                 if (nameEvent.isEmpty() || debut == null || fin == null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(CreateEventActivity.this);
                     builder.setMessage(R.string.create_event_Enregistrer_error_message)
@@ -203,7 +200,7 @@ public class CreateEventActivity extends AppCompatActivity {
     }
 
     public void loadMain(){
-        Intent intent = new Intent(this, GestionEventActivity.class);
+        Intent intent = new Intent(this, ListEventActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

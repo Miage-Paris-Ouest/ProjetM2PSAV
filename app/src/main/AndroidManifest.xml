@@ -49,6 +49,8 @@
         <activity android:name=".activities.GestionEventActivity"/>
         <activity android:name=".activities.CreateEventActivity"/>
         <activity android:name=".activities.LocateActivity"/>
+        <activity android:name=".activities.ListEventActivity"/>
+        <activity android:name=".activities.EventNearbyActivity"/>
     </application>
 
 </manifest>

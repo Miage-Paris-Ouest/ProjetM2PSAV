@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.nviller.projetm2psav.DataParser;
+import com.example.nviller.projetm2psav.datas.DataParser;
 import com.example.nviller.projetm2psav.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
