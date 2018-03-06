@@ -34,9 +34,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
  * Created by mouna on 06/03/2018.
  */
 
-public class EventNearbyTestActivity
-
-        extends FragmentActivity implements OnMapReadyCallback,
+public class EventNearbyTestActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
@@ -150,27 +148,6 @@ public class EventNearbyTestActivity
                 Toast.makeText(EventNearbyTestActivity.this,"Nearby Hospitals", Toast.LENGTH_LONG).show();
             }
         });
-
-        Button btnSchool = (Button) findViewById(R.id.activity_event_nearby_btSchool);
-        btnSchool.setOnClickListener(new View.OnClickListener() {
-            String School = "school";
-            @Override
-            public void onClick(View v) {
-                Log.d("onClick", "Button is Clicked");
-                mMap.clear();
-                if (mCurrLocationMarker != null) {
-                    mCurrLocationMarker.remove();
-                }
-                String url = getUrl(latitude, longitude, School);
-                Object[] DataTransfer = new Object[2];
-                DataTransfer[0] = mMap;
-                DataTransfer[1] = url;
-                Log.d("onClick", url);
-                GetNearbyEventData getNearbyPlacesData = new GetNearbyEventData();
-                getNearbyPlacesData.execute(DataTransfer);
-                Toast.makeText(EventNearbyTestActivity.this,"Nearby Schools", Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -202,7 +179,7 @@ public class EventNearbyTestActivity
         googlePlacesUrl.append("&radius=" + PROXIMITY_RADIUS);
         googlePlacesUrl.append("&type=" + nearbyPlace);
         googlePlacesUrl.append("&sensor=true");
-        googlePlacesUrl.append("&key=" + "AIzaSyATuUiZUkEc_UgHuqsBJa1oqaODI-3mLs0");
+        googlePlacesUrl.append("&key=" + "AIzaSyCQt0M3ESUv3czbC46b6UGsJCdJJJ0O-tI");//AIzaSyATuUiZUkEc_UgHuqsBJa1oqaODI-3mLs0
         Log.d("getUrl", googlePlacesUrl.toString());
         return (googlePlacesUrl.toString());
     }
