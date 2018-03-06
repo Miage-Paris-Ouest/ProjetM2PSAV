@@ -14,8 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.nviller.projetm2psav.R;
-import com.example.nviller.projetm2psav.datasMaps.Example;
-import com.example.nviller.projetm2psav.datasMaps.RetrofitMaps;
+import com.example.nviller.projetm2psav.datas.GetNearbyEventData;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -31,17 +30,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import retrofit.GsonConverterFactory;
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
-
 /**
- * Created by mouna on 01/03/2018.
+ * Created by mouna on 06/03/2018.
  */
 
-public class EventNearbyActivity extends FragmentActivity implements OnMapReadyCallback,
+public class EventNearbyTestActivity
+
+        extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
@@ -64,22 +59,22 @@ public class EventNearbyActivity extends FragmentActivity implements OnMapReadyC
             checkLocationPermission();
         }
 
-        //show error dialog if Google Play Services not available
-        if (!isGooglePlayServicesAvailable()) {
-            Log.d("onCreate", "Google Play Services not available. Ending Test case.");
+        //Check if Google Play Services Available or not
+        if (!CheckGooglePlayServices()) {
+            Log.d("onCreate", "Finishing test case since Google Play Services are not available");
             finish();
         }
         else {
-            Log.d("onCreate", "Google Play Services available. Continuing.");
+            Log.d("onCreate","Google Play Services available.");
         }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(R.id.activity_event_nearby_fragment);
         mapFragment.getMapAsync(this);
     }
 
-    private boolean isGooglePlayServicesAvailable() {
+    private boolean CheckGooglePlayServices() {
         GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
         int result = googleAPI.isGooglePlayServicesAvailable(this);
         if(result != ConnectionResult.SUCCESS) {
@@ -91,6 +86,7 @@ public class EventNearbyActivity extends FragmentActivity implements OnMapReadyC
         }
         return true;
     }
+
 
     /**
      * Manipulates the map once available.
@@ -104,102 +100,75 @@ public class EventNearbyActivity extends FragmentActivity implements OnMapReadyC
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         //Initialize Google Play Services
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
+                    Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED) {
                 buildGoogleApiClient();
                 mMap.setMyLocationEnabled(true);
             }
-        } else {
+        }
+        else {
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
 
-        Button btnRestaurant = (Button) findViewById(R.id.btnRestaurant);
-        btnRestaurant.setOnClickListener(new View.OnClickListener() {
+        Button btnRestaurant = (Button) findViewById(R.id.activity_event_nearby_btResto);
+        btnRestaurant.setOnClickListener(new View.OnClickListener(){
+            String Restaurant = "restaurant";
             @Override
             public void onClick(View v) {
-                build_retrofit_and_get_response("restaurant");
+                Log.d("onClick", "Button is Clicked");
+                mMap.clear();
+                String url = getUrl(latitude, longitude, Restaurant);
+                Object[] DataTransfer = new Object[2];
+                DataTransfer[0] = mMap;
+                DataTransfer[1] = url;
+                Log.d("onClick", url);
+                GetNearbyEventData getNearbyPlacesData = new GetNearbyEventData();
+                getNearbyPlacesData.execute(DataTransfer);
+                Toast.makeText(EventNearbyTestActivity.this,"Nearby Restaurants", Toast.LENGTH_LONG).show();
             }
         });
 
-        Button btnHospital = (Button) findViewById(R.id.btnHospital);
+        Button btnHospital = (Button) findViewById(R.id.activity_event_nearby_btHosto);
         btnHospital.setOnClickListener(new View.OnClickListener() {
+            String Hospital = "hospital";
             @Override
             public void onClick(View v) {
-                build_retrofit_and_get_response("hospital");
+                Log.d("onClick", "Button is Clicked");
+                mMap.clear();
+                String url = getUrl(latitude, longitude, Hospital);
+                Object[] DataTransfer = new Object[2];
+                DataTransfer[0] = mMap;
+                DataTransfer[1] = url;
+                Log.d("onClick", url);
+                GetNearbyEventData getNearbyPlacesData = new GetNearbyEventData();
+                getNearbyPlacesData.execute(DataTransfer);
+                Toast.makeText(EventNearbyTestActivity.this,"Nearby Hospitals", Toast.LENGTH_LONG).show();
             }
         });
 
-        Button btnSchool = (Button) findViewById(R.id.btnSchool);
+        Button btnSchool = (Button) findViewById(R.id.activity_event_nearby_btSchool);
         btnSchool.setOnClickListener(new View.OnClickListener() {
+            String School = "school";
             @Override
             public void onClick(View v) {
-                build_retrofit_and_get_response("school");
-            }
-        });
-
-        Button btnMosque=(Button)findViewById(R.id.btnMosque);
-        btnMosque.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                build_retrofit_and_get_response("mosque");
-            }
-        });
-
-    }
-
-    private void build_retrofit_and_get_response(String type) {
-
-        String url = "https://maps.googleapis.com/maps/";
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(url)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        RetrofitMaps service = retrofit.create(RetrofitMaps.class);
-
-        Call<Example> call = service.getNearbyPlaces(type, latitude + "," + longitude, PROXIMITY_RADIUS);
-
-        call.enqueue(new Callback<Example>() {
-            @Override
-            public void onResponse(Response<Example> response, Retrofit retrofit) {
-                try {
-                    mMap.clear();
-                    // This loop will go through all the results and add marker on each location.
-                    for (int i = 0; i < response.body().getResults().size(); i++) {
-                        Double lat = response.body().getResults().get(i).getGeometry().getLocation().getLat();
-                        Double lng = response.body().getResults().get(i).getGeometry().getLocation().getLng();
-                        String placeName = response.body().getResults().get(i).getName();
-                        String vicinity = response.body().getResults().get(i).getVicinity();
-                        MarkerOptions markerOptions = new MarkerOptions();
-                        LatLng latLng = new LatLng(lat, lng);
-                        // Position of Marker on Map
-                        markerOptions.position(latLng);
-                        // Adding Title to the Marker
-                        markerOptions.title(placeName + " : " + vicinity);
-                        // Adding Marker to the Camera.
-                        Marker m = mMap.addMarker(markerOptions);
-                        // Adding colour to the marker
-                        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                        // move map camera
-                        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                        mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
-                    }
-                } catch (Exception e) {
-                    Log.d("onResponse", "There is an error");
-                    e.printStackTrace();
+                Log.d("onClick", "Button is Clicked");
+                mMap.clear();
+                if (mCurrLocationMarker != null) {
+                    mCurrLocationMarker.remove();
                 }
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                Log.d("onFailure", t.toString());
+                String url = getUrl(latitude, longitude, School);
+                Object[] DataTransfer = new Object[2];
+                DataTransfer[0] = mMap;
+                DataTransfer[1] = url;
+                Log.d("onClick", url);
+                GetNearbyEventData getNearbyPlacesData = new GetNearbyEventData();
+                getNearbyPlacesData.execute(DataTransfer);
+                Toast.makeText(EventNearbyTestActivity.this,"Nearby Schools", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -226,6 +195,18 @@ public class EventNearbyActivity extends FragmentActivity implements OnMapReadyC
         }
     }
 
+    private String getUrl(double latitude, double longitude, String nearbyPlace) {
+
+        StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+        googlePlacesUrl.append("location=" + latitude + "," + longitude);
+        googlePlacesUrl.append("&radius=" + PROXIMITY_RADIUS);
+        googlePlacesUrl.append("&type=" + nearbyPlace);
+        googlePlacesUrl.append("&sensor=true");
+        googlePlacesUrl.append("&key=" + "AIzaSyATuUiZUkEc_UgHuqsBJa1oqaODI-3mLs0");
+        Log.d("getUrl", googlePlacesUrl.toString());
+        return (googlePlacesUrl.toString());
+    }
+
     @Override
     public void onConnectionSuspended(int i) {
 
@@ -233,13 +214,13 @@ public class EventNearbyActivity extends FragmentActivity implements OnMapReadyC
 
     @Override
     public void onLocationChanged(Location location) {
-
         Log.d("onLocationChanged", "entered");
 
         mLastLocation = location;
         if (mCurrLocationMarker != null) {
             mCurrLocationMarker.remove();
         }
+
         //Place current location marker
         latitude = location.getLatitude();
         longitude = location.getLongitude();
@@ -247,20 +228,23 @@ public class EventNearbyActivity extends FragmentActivity implements OnMapReadyC
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
         markerOptions.title("Current Position");
-
-        // Adding colour to the marker
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
-
-        // Adding Marker to the Map
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        Toast.makeText(EventNearbyTestActivity.this,"Your Current Location", Toast.LENGTH_LONG).show();
 
-        Log.d("onLocationChanged", String.format("latitude:%.3f longitude:%.3f", latitude, longitude));
+        Log.d("onLocationChanged", String.format("latitude:%.3f longitude:%.3f",latitude,longitude));
 
+        //stop location updates
+        if (mGoogleApiClient != null) {
+            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+            Log.d("onLocationChanged", "Removing Location Updates");
+        }
         Log.d("onLocationChanged", "Exit");
+
     }
 
     @Override
@@ -334,3 +318,4 @@ public class EventNearbyActivity extends FragmentActivity implements OnMapReadyC
         }
     }
 }
+
