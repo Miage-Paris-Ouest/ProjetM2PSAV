@@ -127,30 +127,21 @@ public class EventNearbyActivity extends FragmentActivity implements OnMapReadyC
             }
         });
 
-        Button btnHospital = (Button) findViewById(R.id.btnHospital);
+        Button btnHospital = (Button) findViewById(R.id.btnEvent);
         btnHospital.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                build_retrofit_and_get_response("cinema");
+            }
+        });
+
+        Button btnCine = (Button) findViewById(R.id.btnCine);
+        btnCine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 build_retrofit_and_get_response("hospital");
             }
         });
-
-        Button btnSchool = (Button) findViewById(R.id.btnSchool);
-        btnSchool.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                build_retrofit_and_get_response("school");
-            }
-        });
-
-        Button btnMosque=(Button)findViewById(R.id.btnMosque);
-        btnMosque.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                build_retrofit_and_get_response("mosque");
-            }
-        });
-
     }
 
     private void build_retrofit_and_get_response(String type) {

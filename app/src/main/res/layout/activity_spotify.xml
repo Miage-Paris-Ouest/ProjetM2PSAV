@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="339dp"
+        android:layout_height="202dp"
+        android:layout_above="@+id/activity_spotify_retour"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="126dp"
+        android:text="Il vous faut un compte Spotify Premium !"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="23dp"
+        tools:layout_editor_absoluteY="153dp" />
+
+    <Button
+        android:id="@+id/activity_spotify_retour"
+        android:layout_width="172dp"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="37dp"
+        android:text="Retour au mennu"
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="502dp" />
+
+</RelativeLayout>

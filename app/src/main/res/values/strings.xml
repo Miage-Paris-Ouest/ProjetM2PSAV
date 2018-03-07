@@ -40,4 +40,9 @@
     <!-- API Google-->
     <string name="mapKey">AIzaSyCQt0M3ESUv3czbC46b6UGsJCdJJJ0O-tI</string>
 
+    <!-- API Facebook-->
+    <string name="facebook_app_id">1492207237571556</string>
+    <string name="fb_login_protocol_scheme">fb1492207237571556</string>
+
+
 </resources>
