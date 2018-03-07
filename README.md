@@ -1,17 +1,15 @@
 # ProjetM2PSAV
-Projet de MIAGE M2 Classique réalisé par  Piron William, Sow Maïmouna, Adonis Gerald et Viller Nathanaëlle
+Projet de MIAGE M2 Classique réalisé par : Piron William, Sow Maïmouna, Adonis Gerald et Viller Nathanaëlle
 
 Résumé du projet : L'application permet de lister les événements qui sont aux alentours de vous. Par rapport à cette fonctionnalité, nous nous sommes inspirés sur un projet des anciens M2 de MIAGE de Nanterre, qui s'appelle "Concert d'à côté".
 
 Ainsi vous avez aussi la possibilité de:
 
     - créer un événement
-
     - participer à un événement
-
     - lister les restaurants aux alentours, utile quand on a une petite fin à la sortie d'un événement
     - récupérer ses événements depuis facebook
-    
+
 Liens utiles:
 Soutenance du projet : https://drive.google.com/file/d/1vgIWYeu3vxFZh-bFaCdyOQ8oKoYZOVL5/view?usp=sharing
 
