@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/image2">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="339dp"
         android:layout_height="202dp"
-        android:layout_above="@+id/activity_spotify_retour"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="126dp"
+        android:layout_marginTop="137dp"
         android:text="Il vous faut un compte Spotify Premium !"
         android:textSize="30sp"
         tools:layout_editor_absoluteX="23dp"
