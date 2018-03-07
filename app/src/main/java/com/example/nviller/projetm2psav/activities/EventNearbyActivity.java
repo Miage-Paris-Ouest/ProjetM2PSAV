@@ -131,7 +131,7 @@ public class EventNearbyActivity extends FragmentActivity implements OnMapReadyC
         btnHospital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                build_retrofit_and_get_response("cinema");
+                build_retrofit_and_get_response("party");
             }
         });
 
@@ -139,7 +139,7 @@ public class EventNearbyActivity extends FragmentActivity implements OnMapReadyC
         btnCine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                build_retrofit_and_get_response("hospital");
+                build_retrofit_and_get_response("cinema");
             }
         });
     }
@@ -319,9 +319,6 @@ public class EventNearbyActivity extends FragmentActivity implements OnMapReadyC
                 }
                 return;
             }
-
-            // other 'case' lines to check for other permissions this app might request.
-            // You can add here other case statements according to your requirement.
         }
     }
 }
