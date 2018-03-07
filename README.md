@@ -1,10 +1,11 @@
 # ProjetM2PSAV
 Projet de MIAGE M2 Classique réalisé par  Piron William, Sow Maïmouna, Adonis Gerald et Viller Nathanaëlle
 
-Résumé du projet : C'est une application 
+Résumé du projet : C'est une application
 
 Liens utiles:
 Soutenance du projet : https://drive.google.com/file/d/1vgIWYeu3vxFZh-bFaCdyOQ8oKoYZOVL5/view?usp=sharing
+
 Trello du projet : https://trello.com/b/dNFSn2wJ/psi-psav
 Base de donnée : https://console.firebase.google.com/project/projetm2psav-938e0/overview
 Clé API Google Maps :
