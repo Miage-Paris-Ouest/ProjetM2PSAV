@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     android:orientation="vertical"
-    android:background="@drawable/image1"
+    android:background="@drawable/pageaccueil"
     tools:context="com.example.nviller.projetm2psav.activities.MainActivity">
 
     <RelativeLayout
@@ -26,8 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|center_horizontal"
             android:gravity="top|center_vertical|center_horizontal|center"
-            android:text="Bienvenue dans PSAVEvent"
-            android:textSize="20sp"
+            android:text="Bienvenue dans FunEvent"
+            android:textSize="50sp"
             android:layout_marginTop="10dp"/>
 
         <Button
@@ -35,7 +35,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="80dp"
             android:text="Se connecter" />
 
         <Button
@@ -47,17 +47,16 @@
             android:text="Créer un compte"/>
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="Pas besoin de compte"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:id="@+id/activity_main_not_compte"
-            android:layout_marginTop="170dp"/>
-
-
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_sliding_menu"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#FFFFFF"
+        android:choiceMode="singleChoice">
+
+    </ListView>
 
 </android.support.v4.widget.DrawerLayout>
